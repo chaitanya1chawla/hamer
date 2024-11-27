@@ -53,7 +53,7 @@ python3 -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 First you need to clone the repo:
 
 ```
-git clone --recursive https://github.com/geopavlakos/hamer.git
+git clone --recursive https://github.com/chaitanya1chawla/hamer.git
 cd hamer
 pip install -e .[all]
 
