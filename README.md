@@ -49,31 +49,7 @@ pip install -v -e third-party/ViTPose
 
 Install Detectron2:
 
-# Create conda env
-
-conda create --name detectron2 python==3.9 -y
-conda activate detectron2
-
-# Install torch
-
-pip install torch torchvision
-
-# Install gcc and g++ with conda
-
-conda install -c conda-forge pybind11
-conda install -c conda-forge gxx
-conda install -c anaconda gcc_linux-64
-conda upgrade -c conda-forge --all
-
-# I had to add a version to the gcc install, and used conda-forge:
-
-conda install -c conda-forge  gcc_linux-64=13.2.0
-
-# Install detectron2 (specific version)
-
-pip install 'git+https://github.com/facebookresearch/detectron2.git@v0.6'
-
-<?
+```bash
 # Create conda env
 conda create --name detectron2 python==3.9 -y
 conda activate detectron2
@@ -92,6 +68,7 @@ conda install -c conda-forge  gcc_linux-64=13.2.0
 
 # Install detectron2 (specific version)
 pip install 'git+https://github.com/facebookresearch/detectron2.git@v0.6'
+```
 
 You also need to download the trained models:
 
