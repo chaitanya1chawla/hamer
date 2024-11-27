@@ -16,7 +16,7 @@ setup(
         # 'torch',
         # 'torchvision',
         'yacs',
-        
+        # 
         'chumpy @ git+https://github.com/mattloper/chumpy',
         'mmcv==1.3.9',
         'mmpose==0.29.0',
