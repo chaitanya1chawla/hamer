@@ -16,7 +16,63 @@ Code repository for the paper:
 - [2024/05] We have released the HInt dataset annotations! Please check [here](https://github.com/ddshan/hint).
 - [2023/12] Original release!
 
-## Installation
+## Pull docker image
+I have pushed a pre-compiled docker image if you don't want to go through the hassle of making your own container.
+```bash
+docker pull chaitanya1chawla/hamer_container:hamer_image
+docker run -it --gpus all chaitanya1chawla/hamer_container:hamer_image
+```
+
+## Installation with Docker [recommended]
+
+Setup docker container with cuda image:
+```bash
+# Pull image and run container:
+docker pull nvcr.io/nvidia/cuda:11.7.0-devel-ubuntu22.04  # devel image because base image doesn't support cuda/nvcc etc.
+docker run -it --gpus all nvcr.io/nvidia/cuda:11.7.0-devel-ubuntu22.04
+
+# Inside container -
+
+# Setup environment:
+apt-get update && apt-get upgrade
+apt install python3
+apt install python3-pip
+apt-get install ffmpeg libsm6 libxext6
+python3 -m pip install numpy matplotlib scikit-learn scikit-image opencv-python opencv-contrib-python
+python3 -m pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+apt-get install libglfw3-dev libgles2-mesa-dev
+
+
+# Clone detectron2:
+apt install git
+python3 -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
+
+ pip install "numpy<2"
+```
+
+First you need to clone the repo:
+
+```
+git clone --recursive https://github.com/geopavlakos/hamer.git
+cd hamer
+pip install -e .[all]
+
+cd third-party
+git clone https://github.com/ViTAE-Transformer/ViTPose.git
+cd ViTPose
+pip install -v -e third-party/ViTPose
+```
+
+You also need to download the trained models:
+
+```bash
+bash fetch_demo_data.sh
+```
+
+Besides these files, you also need to download the MANO model. Please visit the [MANO website](https://mano.is.tue.mpg.de) and register to get access to the downloads section.  We only require the right hand model. You need to put `MANO_RIGHT.pkl` under the `_DATA/data/mano` folder.
+
+
+## Local Installation
 
 First you need to clone the repo:
 
